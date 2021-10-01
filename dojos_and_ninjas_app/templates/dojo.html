@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body class = "">
+        <main>
+            <header>
+                <div class="">
+                    <h2>
+                        Dojos and Ninjas
+                    </h2>
+                </div>
+            </header>
+            <div class="">
+                <div class="">
+                    <div class="row">
+                        <div class="h1 mt-3 mb-5">New Dojo</div>
+                    </div>
+                    <form action="/save_dojo" method="POST" class="form px-1">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4 col-sm-2 col-1 text-lg-center">
+                                <label for="name" class="fs-4 mb-2 col-form-label" >Name:</label>
+                            </div>
+                            <div class="col-lg-8 col-sm-10 col-11 pr-5 mr-5">
+                                <input type="text" class="form-control" name="name">
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col offset-lg-4 offset-md-2 d-flex justify-content-center">
+                                <input type= "submit" class="btn btn-secondary px-4 py-1" value="Create">
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4 offset-lg-4 text-center">
+                            <div class="row">
+                                <div class="col-12 h1 mt-3 mb-5">All Dojos</div>
+                            </div>
+                            <div class="">
+                                {% for dojo in dojos %}
+                                        <div class="">
+                                            <!-- <a class="text-white" href="/dojos/{{dojo.id}}">{{dojo.name}}</a> -->
+                                        </div>
+                                {% endfor %}
+                            </div>
+                            <div class="">
+                                <a class="" href="">Add Ninja</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
