@@ -6,8 +6,9 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     </head>
-    <body class = "">
+    <body style="padding: 10% 25%;">
         <header>
             <div class="">
                 <h2>
@@ -18,9 +19,9 @@
         <main>
             <div class="" id="leftSideContainer">
                 <div class="">
-                    <h3>
+                    <h4>
                         New Dojo
-                    </h3>
+                    </h4>
                 </div>
                 <form action="/" method="POST" class="">
                     <div class="mb-3">
@@ -34,18 +35,28 @@
             </div>
             <div class="" id="leftSideContainer">
                     <div class="">
-                        <h3>
+                        <h4>
                             All Dojos
-                        </h3>
+                        </h4>
                     </div>
-                <form action="">
-                    <div class="">
-                        {% for dojo in dojos %}
-                            <div class="">
-                                <!-- <a class="text-white" href="/dojos/{{dojo.id}}">{{dojo.name}}</a> -->
-                            </div>
-                        {% endfor %}
-                    </div>
+                <form action="/" method="GET">
+                        <!-- <a class="text-white" href="/dojos/{{dojo.id}}">{{dojo.name}}</a> -->
+                    <table class="table table-dark table-striped">
+                        <thead style="align-items: center; justify-content: center; text-align: center;">
+                            <td class="col-auto px-5">
+                                List of dojos
+                            </td>
+                        </thead>
+                        <tbody>
+                            {% for dojo in dojos: %}
+                                <tr>                   
+                                    <td class="fs-4" style="align-items: center; justify-content: center; text-align: center;">
+                                        {{dojo.name}}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </form>
                 <div class="">
                     <a class="" href="">Add Ninja</a>
