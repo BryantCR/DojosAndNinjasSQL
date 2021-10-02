@@ -1,8 +1,8 @@
-from users_app.confing.MySQLConnection import connectToMySQL
-from users_app import app 
+from dojos_and_ninjas_app.confing.MySQLConnection import connectToMySQL
+from dojos_and_ninjas_app import app 
 from datetime import date, datetime
 
-class User:
+class Dojo:
     def __init__(self, id, first_name, last_name, email, created_at):
         self.id = id
         self.first_name = first_name
