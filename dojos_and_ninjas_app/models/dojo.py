@@ -3,51 +3,51 @@ from dojos_and_ninjas_app import app
 from datetime import date, datetime
 
 class Dojo:
-    def __init__(self, id, first_name, last_name, email, created_at):
-        self.id = id
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
+    def __init__(self, dojos_id, dojos_name, created_at, updated_at):
+        self.dojos_id = dojos_id
+        self.dojos_name = dojos_name
         self.created_at = created_at
-
-    @classmethod
-    def get_all_users(cls):
-        query = "SELECT * FROM users;"
-        results = connectToMySQL("users_shema").query_db( query )
-        users = []
-        for n in results:
-            users.append( User( n['id'], n['first_name'], n['last_name'], n['email'], n['created_at'] ) )
-        return users
+        self.updated_at = updated_at
+        self.ninjas = []
     
     @classmethod
-    def addDataForm(cls, data):
-        query = "INSERT INTO users (first_name , last_name , email, created_at, updated_at) VALUES ( %(first_name)s , %(last_name)s , %(email)s, SYSDATE(), SYSDATE());"
-        result = connectToMySQL('users_shema').query_db(query,data)
+    def get_all_dojos(cls):
+        query = "SELECT * FROM dojos;"
+        results = connectToMySQL("dojos_and_ninjas").query_db( query )
+        dojos = []
+        for n in results:
+            dojos.append( Dojo( n['dojos_id'], n['dojos_name'], n['created_at'], n['updated_at'] ) )
+        return ninjas
+
+    @classmethod
+    def addNewDojo(cls, data):
+        query = "INSERT INTO dojos (dojos_name, created_at, updated_at) VALUES ( %(dojos_name)s, SYSDATE(), SYSDATE());"
+        result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return result
 
     @classmethod
-    def editUserData(cls, data):
-        query = "UPDATE users SET first_name = %(first_name2Fromform2)s, last_name = %(lastst_name2Fromform2)s, email = %(email2Fromform2)s, updated_at = SYSDATE() WHERE id=%(id)s;"
-        result = connectToMySQL('users_shema').query_db(query, data)
-        print(data)
+    def editDojoData(cls, data):
+        query = "UPDATE users SET dojos_name = %(dojos_name)s, WHERE dojos_id = %(id)s;"
+        result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
+        print("This come from editDojoData Method model: ", data)
         return result
 
     @classmethod
-    def get_one(cls, id):
-        print("8")
-        query  = "SELECT * FROM users WHERE id = %(id)s;"
+    def get_one_dojo(cls, id):
+        print("from get_one_dojo method 1 **************************************")
+        query  = "SELECT * FROM dojos WHERE dojos_id = %(id)s;"
         data = {
             "id" : id
         }
-        result = connectToMySQL('users_shema').query_db( query, data )
+        result = connectToMySQL('dojos_and_ninjas').query_db( query, data )
         user_data = []
 
         #for users in result:
             #user_data.append(User(user['id'],user['first_name'], user['last_name'], user['email'],user['created_at'],user['updated_at']))
-        print("9", user_data )
+        print("End of the get_one_dojo method***********************************")
         return result
 
     @classmethod
-    def deleteUser(cls, data ):
-        query = "DELETE FROM users WHERE id = %(id)s;"
+    def deleteDojo(cls, data ):
+        query = "DELETE FROM dojos WHERE dojos_id = %(id)s;"
         return connectToMySQL('users_shema').query_db( query, data )

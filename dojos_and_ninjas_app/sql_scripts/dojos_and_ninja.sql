@@ -3,18 +3,18 @@ CREATE DATABASE dojos_and_ninjas;
 USE dojos_and_ninjas;
 
 CREATE TABLE dojos(
-	dojos_id INT PRIMARY KEY NOT NULL,
+	dojos_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     dojos_name VARCHAR(30) NOT NULL,
     created_at DATETIME,
     updated_at DATETIME
 );
 
 CREATE TABLE ninjas(
-	id INT PRIMARY KEY NOT NULL,
+	ninjas_id INT PRIMARY KEY NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     age INT,
-    dojos_id INT NOT NULL,
+    dojos_id INT NOT NULL AUTO_INCREMENT,
     FOREIGN KEY (dojos_id) 
 		REFERENCES dojos(dojos_id)
         ON DELETE CASCADE,
