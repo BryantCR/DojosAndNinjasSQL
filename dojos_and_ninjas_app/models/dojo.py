@@ -1,4 +1,4 @@
-from dojos_and_ninjas_app.confing.MySQLConnection import connectToMySQL
+from dojos_and_ninjas_app.config.MySQLConnection import connectToMySQL
 from dojos_and_ninjas_app import app 
 from datetime import date, datetime
 
@@ -17,11 +17,12 @@ class Dojo:
         dojos = []
         for n in results:
             dojos.append( Dojo( n['dojos_id'], n['dojos_name'], n['created_at'], n['updated_at'] ) )
-        return ninjas
+
+        return dojos
 
     @classmethod
     def addNewDojo(cls, data):
-        query = "INSERT INTO dojos (dojos_name, created_at, updated_at) VALUES ( %(dojos_name)s, SYSDATE(), SYSDATE());"
+        query = "INSERT INTO dojos (dojos_id, dojos_name, created_at, updated_at) VALUES ( %(dojos_id)d, %(dojos_name)s, SYSDATE(), SYSDATE());"
         result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return result
 

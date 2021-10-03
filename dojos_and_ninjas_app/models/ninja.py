@@ -1,4 +1,4 @@
-from dojos_and_ninjas_app.confing.MySQLConnection import connectToMySQL
+from dojos_and_ninjas_app.config.MySQLConnection import connectToMySQL
 from dojos_and_ninjas_app import app 
 from datetime import date, datetime
 
@@ -20,6 +20,13 @@ class Ninja:
         for n in results:
             ninjas.append( Ninja( n['ninjas_id'], n['first_name'], n['last_name'], n['age'] ) )
         return ninjas
+
+    @classmethod
+    def addNewNinja(cls, data, id):
+        query = "INSERT INTO ninjas (first_name , last_name , age, created_at, updated_at) VALUES ( %(first_name)s , %(last_name)s , %(age)s, SYSDATE(), SYSDATE());"
+        
+        result = connectToMySQL('dojos_and_ninjas').query_db(query,data)
+        return result
 
     @classmethod
     def get_one_ninja(cls, id):

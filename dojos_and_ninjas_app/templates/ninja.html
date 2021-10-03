@@ -18,22 +18,22 @@
         </header>
         <main>
             <div class="container col-lg-4 col-md-6 col-sm-10 offset-lg-4 offset-md-3 offset-sm-1">
-                <form action="/save_ninja" method="POST" class="p-4 bg-primary text-white">
+                <form action="/dojo/ninjas/<id>" method="POST" class="p-4 bg-primary text-white">
                     <div class="form-group mb-3">
-                        <label for="dojo" class="form-label" >Dojo:</label>
-                        <select class="form-select" name="dojo">
-                            {% for dojo in dojos %}
-                                <option value="{{dojo.id}}">{{dojo.name}}</option>
-                            {% endfor %}
-                        </select>
+                        <label for="dojos_name" class="form-label" >Dojo:</label>
+                            <select class="form-select" name="dojos_name">
+                                {% for dojo in dojos: %}
+                                <option value="{{dojo['dojos_name']}}">{{dojo['dojos_name']}}</option>
+                                {% endfor %}
+                            </select>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="first_name2">First Name:</label>
-                        <input class="form-control" type="text" id="first_name2" name="first_name2" value = "{{users1[0]['first_name']}}">
+                        <label class="form-label" for="first_name">First Name:</label>
+                        <input class="form-control" type="text" id="first_name" name="first_name" value = "">
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="last_name2">Last Name:</label>
-                        <input class="form-control" type="text" id="last_name2" name="last_name2" value= "{{users1[0]['last_name']}}">
+                        <label class="form-label" for="last_name">Last Name:</label>
+                        <input class="form-control" type="text" id="last_name" name="last_name" value= "">
                     </div>
                     <div class="form-group mb-3">
                         <label for="age" class="form-label">Age:</label>
@@ -44,7 +44,7 @@
                     </div>
                 </form>
                 <div class="">
-                    <a class="" href="">Home</a>
+                    <a class="" href="/dojos">Home</a>
                 </div>
             </div>
         </main>
