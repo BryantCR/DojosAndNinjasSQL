@@ -19,7 +19,6 @@ class Dojo:
         dojos = []
         for n in results:
             dojos.append( Dojo( n['dojos_id'], n['dojos_name'], n['created_at'], n['updated_at'] ) )
-
         return dojos
 
     @classmethod

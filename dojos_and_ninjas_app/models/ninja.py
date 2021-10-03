@@ -22,10 +22,11 @@ class Ninja:
         return ninjas
 
     @classmethod
-    def addNewNinja(cls, data, id):
-        query = "INSERT INTO ninjas (first_name , last_name , age, created_at, updated_at) VALUES ( %(first_name)s , %(last_name)s , %(age)s, SYSDATE(), SYSDATE());"
-        
-        result = connectToMySQL('dojos_and_ninjas').query_db(query,data)
+    def addNewNinja(cls, data):
+        query = "INSERT INTO ninjas (first_name , last_name , age, dojos_id, created_at, updated_at) VALUES ( %( %(first_name)s , %(last_name)s , %(age)s,  %(id)s, SYSDATE(), SYSDATE());"
+        print("SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+        result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
+        print("RESULTS FROM GET ADD NINJA", result)
         return result
 
     @classmethod

@@ -10,7 +10,6 @@ def displayLogin():
 @app.route( "/dojos", methods = ["GET"] )
 def loginPage():
     currentDojosInDataBase = Dojo.get_all_dojos()
-    print("Hola ", currentDojosInDataBase)
     return render_template("dojo.html", dojos = currentDojosInDataBase )
 
 @app.route( "/dojos/create", methods = ["POST"] )
@@ -24,7 +23,7 @@ def listOfNinjas(id):
     data = {
         "id" : id
     }
-    result = Dojo.get_one_dojo(data)
+    result = Dojo.get_one_dojo(id)
     showDojoNinjas = Dojo.ninjasInDojo(data)
     print("Ninjas: ", showDojoNinjas)
     return render_template("dojoshow.html", ninjas = showDojoNinjas, dojos = result)

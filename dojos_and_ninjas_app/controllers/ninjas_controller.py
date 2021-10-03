@@ -20,7 +20,7 @@ def createNewNinja():
             "age" : request.form['age']
         }
     allDojos = Dojo.get_all_dojos()
-    newNinja = Ninja.addNewNinja(data, id)
+    newNinja = Ninja.addNewNinja(data)
     print("Second request form: ", newNinja)
     print(allDojos, "Second request form: **************************************************************")
     return redirect("/")
