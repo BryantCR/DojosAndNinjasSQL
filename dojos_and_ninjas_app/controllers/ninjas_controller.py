@@ -22,5 +22,7 @@ def createNewNinja():
     allDojos = Dojo.get_all_dojos()
     newNinja = Ninja.addNewNinja(data, id)
     print("Second request form: ", newNinja)
-    return render_template ("ninja.html", ninjas = newNinja, dojos = allDojos, id = id )
+    print(allDojos, "Second request form: **************************************************************")
+    return redirect("/")
+    #return render_template ("ninja.html", ninjas = newNinja, dojos = allDojos, id = id )
 
