@@ -24,17 +24,3 @@ def createNewNinja():
     print("Second request form: ", newNinja)
     return render_template ("ninja.html", ninjas = newNinja, dojos = allDojos, id = id )
 
-@app.route( "/dojo/ninjas/<id>", methods = ["GET"])
-def listOfNinjas(id):
-    allDojos = Dojo.get_one_dojo(id)
-    showDojoNinjas = Ninja.get_all_ninjas()
-    print("Ninjas: ", showDojoNinjas)
-    return render_template("dojoshow.html", ninjas = showDojoNinjas, dojos = allDojos )
-
-
-
-
-
-
-
-

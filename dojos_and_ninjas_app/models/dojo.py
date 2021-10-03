@@ -1,6 +1,8 @@
 from dojos_and_ninjas_app.config.MySQLConnection import connectToMySQL
 from dojos_and_ninjas_app import app 
 from datetime import date, datetime
+from dojos_and_ninjas_app.models.Ninja import Ninja
+
 
 class Dojo:
     def __init__(self, dojos_id, dojos_name, created_at, updated_at):
@@ -22,7 +24,7 @@ class Dojo:
 
     @classmethod
     def addNewDojo(cls, data):
-        query = "INSERT INTO dojos (dojos_id, dojos_name, created_at, updated_at) VALUES ( %(dojos_id)d, %(dojos_name)s, SYSDATE(), SYSDATE());"
+        query = "INSERT INTO dojos ( dojos_name, created_at, updated_at) VALUES ( %(dojos_name)s, SYSDATE(), SYSDATE());"
         result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return result
 
@@ -41,10 +43,6 @@ class Dojo:
             "id" : id
         }
         result = connectToMySQL('dojos_and_ninjas').query_db( query, data )
-        user_data = []
-
-        #for users in result:
-            #user_data.append(User(user['id'],user['first_name'], user['last_name'], user['email'],user['created_at'],user['updated_at']))
         print("End of the get_one_dojo method***********************************")
         return result
 
@@ -52,3 +50,29 @@ class Dojo:
     def deleteDojo(cls, data ):
         query = "DELETE FROM dojos WHERE dojos_id = %(id)s;"
         return connectToMySQL('users_shema').query_db( query, data )
+
+    @classmethod
+    def ninjasInDojo(cls, data):
+        query= "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojos_id = dojos.dojos_id WHERE dojos.dojos_id = %(id)s;"
+        data = {
+            "id" : id
+        }
+        results = connectToMySQL('dojos_and_ninjas').query_db( query , data )
+        print("from ninjasInDojo: ", results)
+        dojos = []
+        for n in results:
+            data = {
+                'ninjas_id': n['ninjas.ninjas_id'],
+                'first_name': n['first_name'],
+                'last_name': n['last_name'],
+                'age': n['age'],
+                'created_at': n['ninjas.created_at'],
+                'updated_at': n['ninjas.updated_at']
+            }
+            dojos.ninjas.append( Ninja(data) )
+        return dojos
+
+
+
+
+

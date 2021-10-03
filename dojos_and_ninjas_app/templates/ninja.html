@@ -18,12 +18,12 @@
         </header>
         <main>
             <div class="container col-lg-4 col-md-6 col-sm-10 offset-lg-4 offset-md-3 offset-sm-1">
-                <form action="/dojo/ninjas/<id>" method="POST" class="p-4 bg-primary text-white">
+                <form action="/dojo/ninjas/{{dojos_id}}" method="POST" class="p-4 bg-primary text-white">
                     <div class="form-group mb-3">
                         <label for="dojos_name" class="form-label" >Dojo:</label>
                             <select class="form-select" name="dojos_name">
                                 {% for dojo in dojos: %}
-                                <option value="{{dojo['dojos_name']}}">{{dojo['dojos_name']}}</option>
+                                <option value="{{dojos['dojos_id']}}">{{dojo['dojos_name']}}</option>
                                 {% endfor %}
                             </select>
                     </div>

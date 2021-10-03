@@ -19,18 +19,14 @@ def createNewDojos():
     Dojo.addNewDojo(request.form)
     return redirect('/dojos')
 
-# @app.route( "/ninjas", methods = ["GET"]  )
-# def addNewNinja():
-#     currentDojosInDataBase = Dojo.get_all_dojos()
-#     print("Hola ", currentDojosInDataBase)
-#     return render_template("ninja.html", dojos = currentDojosInDataBase )
-
-
-
-
-
-
-
-
+@app.route( "/dojo/ninjas/<id>", methods = ["GET"])
+def listOfNinjas(id):
+    data = {
+        "id" : id
+    }
+    result = Dojo.get_one_dojo(data)
+    showDojoNinjas = Dojo.ninjasInDojo(data)
+    print("Ninjas: ", showDojoNinjas)
+    return render_template("dojoshow.html", ninjas = showDojoNinjas, dojos = result)
 
 
