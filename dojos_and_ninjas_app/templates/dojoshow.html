@@ -11,8 +11,8 @@
     <body class="bg-light text-secondary">
         <main>
             <div>
-                <div>{{dojos.dojos_name}} Ninjas</div>
-                <table>
+                <div>{{dojos[0]["dojos_name"]}} Ninjas</div>
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <td>
@@ -27,10 +27,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for ninja in ninjas %}
+                        {% for ninja in dojos %}
                             <tr>
                                 <td>
-                                    {{ ninja.first_name }}
+                                    {{ ninja['first_name'] }}
                                 </td>
                                 <td>
                                     {{ ninja["last_name"] }}

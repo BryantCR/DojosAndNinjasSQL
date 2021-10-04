@@ -23,9 +23,8 @@ def listOfNinjas(id):
     data = {
         "id" : id
     }
-    result = Dojo.get_one_dojo(id)
-    showDojoNinjas = Dojo.ninjasInDojo(data)
+    showDojoNinjas = Dojo.ninjasInDojo(id)
     print("Ninjas: ", showDojoNinjas)
-    return render_template("dojoshow.html", ninjas = showDojoNinjas, dojos = result)
+    return render_template("dojoshow.html", dojos = showDojoNinjas)
 
 

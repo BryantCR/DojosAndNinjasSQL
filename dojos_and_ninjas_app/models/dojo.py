@@ -51,25 +51,25 @@ class Dojo:
         return connectToMySQL('users_shema').query_db( query, data )
 
     @classmethod
-    def ninjasInDojo(cls, data):
+    def ninjasInDojo(cls, id):
         query= "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojos_id = dojos.dojos_id WHERE dojos.dojos_id = %(id)s;"
         data = {
             "id" : id
         }
         results = connectToMySQL('dojos_and_ninjas').query_db( query , data )
         print("from ninjasInDojo: ", results)
-        dojos = []
-        for n in results:
-            data = {
-                'ninjas_id': n['ninjas.ninjas_id'],
-                'first_name': n['first_name'],
-                'last_name': n['last_name'],
-                'age': n['age'],
-                'created_at': n['ninjas.created_at'],
-                'updated_at': n['ninjas.updated_at']
-            }
-            dojos.ninjas.append( Ninja(data) )
-        return dojos
+        # dojos = []
+        # for n in results:
+        #     data = {
+        #         'ninjas_id': n['ninjas_id'],
+        #         'first_name': n['first_name'],
+        #         'last_name': n['last_name'],
+        #         'age': n['age'],
+        #         'created_at': n['ninjas.created_at'],
+        #         'updated_at': n['ninjas.updated_at']
+        #     }
+        #     dojos.ninjas.append( Ninja(data) )
+        return results
 
 
 
