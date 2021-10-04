@@ -8,11 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     </head>
-    <body class="bg-light text-secondary">
-        <main>
+    <body>
+        <main style="padding: 10% 25%;">
             <div>
-                <div>{{dojos[0]["dojos_name"]}} Ninjas</div>
-                <table class="table table-dark table-striped">
+                <h2>Dojo {{dojos[0]["dojos_name"]}}</h2>
+                <h3>Ninjas list</h3>
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <td>
@@ -28,7 +29,7 @@
                     </thead>
                     <tbody>
                         {% for ninja in dojos %}
-                            <tr>
+                            <tr class="table-active">
                                 <td>
                                     {{ ninja['first_name'] }}
                                 </td>
@@ -43,7 +44,7 @@
                     </tbody>
                 </table>
                 <div class="">
-                    <a class="" href="/dojos">Home</a>
+                    <a class="link-secondary" href="/dojos">Home</a>
                 </div>
             </div>
         </main>
